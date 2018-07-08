@@ -114,7 +114,7 @@ class perceptron:
             plt.plot(input[0],input[1],'ro' if (label == 1.0) else 'bo')
         
         count = 0
-        #for i in np.linspace(np.amin(inputs[:,:1]),np.amax(inputs[:,:1])):
+
         for i in np.linspace(np.amin(inputs[:,:1]),np.amax(inputs[:,:1]), num = len(boundary)):
             slope = boundary[count][0][0]
             intercept = boundary[count][1][0]
@@ -124,6 +124,7 @@ class perceptron:
             plt.plot(i, y,'ko')
             count += 1
         
+        #Make sure boundary and arbitrary x axis line space count are equal
         print(count,len(boundary))
             
 
@@ -142,6 +143,7 @@ if __name__ == "__main__":
     data, boundary_lines, total_corrections = perceptron_training.run()
     
     #Total number of inputs which needed weight updates
+    #Update bias with xmin,xmax,ymin and ymax in function _train_perceptron to see this changing
     print(total_corrections)
 
     perceptron_training.plot_data(data["input"],data["label"],boundary_lines)
